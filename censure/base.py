@@ -106,7 +106,7 @@ class Token(object):
         self.token_type = token_type
 
     def __repr__(self):
-        return 'Token({}) {} {}'.format(self.value, self.tag, self.token_type) # .encode('utf-8')
+        return 'Token({}) {} {}'.format(self.value, self.tag, self.token_type)  # .encode('utf-8')
 
 
 class CensorException(Exception):
