@@ -1,9 +1,10 @@
-from setuptools import setup
+from setuptools import setup, find_packages
+
 
 setup(
     name='censure',
     version='0.1',
-    description='Detect and filters/replaces obscene/swear words from text/html',
+    description='Detect and clean obscene words from text/html',
     # long_description='',
     classifiers=[
         'Development Status :: 3 - Alpha',
@@ -15,12 +16,13 @@ setup(
         'Topic :: Text Processing :: Filters'
         'Topic :: Text Processing :: Linguistic',
     ],
-    keywords='russian english text obscene swears oauth words filtering',
+    keywords='russian english text obscene swears oauth profanity words filtering',
     url='https://github.com/masteroncluster/py-censure',
-    author='Cluster-Master',
+    author='Master.Cluster',
     author_email='masteroncluster@gmail.com',
     license='GNU',
-    packages=['censure'],
+
+    packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     zip_safe=False,
 
     setup_requires=['pytest-runner'],
