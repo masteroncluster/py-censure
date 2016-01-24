@@ -1,4 +1,5 @@
-import constants
-import patterns
+from . import constants
+from . import patterns
+
 
 __all__ = ['constants', 'patterns']
