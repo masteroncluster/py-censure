@@ -14,16 +14,16 @@ from censure.lang.common import constants, patterns
 #     OBSCENE_HTML_LINES,
 # )
 
-RUSSIAN_LOWECASE = 'абвгдеёжзиклмнопрстуфхцчшщъьэюя'
-ENGLISH_LOWRCASE = string.lowercase
-ALL_LOWERCASE = ENGLISH_LOWRCASE + RUSSIAN_LOWECASE
+RUSSIAN_LOWERCASE = 'абвгдеёжзиклмнопрстуфхцчшщъьэюя'
+ENGLISH_LOWERCASE = string.ascii_lowercase
+ALL_LOWERCASE = ENGLISH_LOWERCASE + RUSSIAN_LOWERCASE
 
 
 class TestCase(CoreTestCase):
     @classmethod
     def _get_random_word_base(cls, letters=None, min_chars=3, max_chars=10, assert_good=True,
                          russian_only=False):
-        letters = letters or ENGLISH_LOWRCASE
+        letters = letters or ENGLISH_LOWERCASE
         word = ''.join((random.choice(letters) for _ in range(min_chars, max_chars)))
         if assert_good:
             if not cls.censor.check_word(word)['is_good']:
@@ -49,7 +49,7 @@ class TestCaseRu(TestCase):
     @classmethod
     def _get_random_word(cls, min_chars=3, max_chars=10, assert_good=True,
                          russian_only=False):
-        letters = RUSSIAN_LOWECASE if russian_only else ALL_LOWERCASE
+        letters = RUSSIAN_LOWERCASE if russian_only else ALL_LOWERCASE
         return cls._get_random_word_base(min_chars=min_chars, max_chars=max_chars, assert_good=assert_good,
                                          letters=letters)
 
@@ -61,7 +61,7 @@ class TestCaseEn(TestCase):
 
     @classmethod
     def _get_random_word(cls, min_chars=3, max_chars=10, assert_good=True):
-        letters = ENGLISH_LOWRCASE
+        letters = ENGLISH_LOWERCASE
         return cls._get_random_word_base(min_chars=min_chars, max_chars=max_chars, assert_good=assert_good,
                                          letters=letters)
 
