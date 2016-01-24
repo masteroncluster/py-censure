@@ -26,8 +26,6 @@ class CensorInternalsTestCase(TestCaseRu):
         word_info = self.censor.check_word(word)
         # try:
         self.assertDictContainsSubset({
-            # 'excuse': [],
-            # 'accuse': [],
             'word': self.censor._prepare_word(word),
             'is_good': True,
         }, word_info)

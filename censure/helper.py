@@ -25,7 +25,11 @@ class CensorHelper:
         return "\n".join(result), count
 
     def test(self):
-        # u, j = self.c.clean_line('членоплет')
+        # wi = self.c._prepare_word('camel toe')
+        # print (wi), 123
+        # return
+
+        # u, j = self.c.clean_line('brotherfucker - homosexual asssucker ass sucker ass goblin assgoblin')
         # print (u)
         # return
 
@@ -45,7 +49,7 @@ def ru_just_test():
     c.test()
 
 def en_just_test():
-    c = CensorHelper(lang='en')
+    c = CensorHelper(lang='en', do_compile=False)
     c.test()
 
 

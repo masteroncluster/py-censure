@@ -1,1 +1,1 @@
-BEEP_HTML = BEEP = 'beep'
+BEEP_HTML = BEEP = '[beep]'

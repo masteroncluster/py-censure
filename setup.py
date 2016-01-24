@@ -23,6 +23,6 @@ setup(
     packages=['censure'],
     zip_safe=False,
 
-    setup_requires=['pytest-runner',],
-    tests_require=['pytest',],
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest'],
 )

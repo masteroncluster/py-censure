@@ -4,14 +4,14 @@
 
 # Russian patterns are from PHP-Matotest, http://php-matotest.sourceforge.net/,
 # that was written by Scarab
-# Ported to Python by Master.Cluster <masteroncluster@gmail.com>, 2010-2016
+# Ported to Python by Master.Cluster <masteroncluster@gmail.com>, 2010, 2016
+# English patters are adapted from http://www.noswearing.com/dictionary/
 
 from __future__ import unicode_literals, print_function
 import re
 from copy import deepcopy
 from importlib import import_module
 
-from .exceptions import CensorException
 from .lang.common import patterns, constants
 
 
@@ -73,7 +73,6 @@ def _get_remained_tokens(tags_list):
             if len(close_tags):
                 post.remove(close_tags[0])
                 continue
-    # print pre,body_tags,post
     return "".join(map(_get_token_value, pre + body_tags)), "".join(map(_get_token_value, post))
 
 
@@ -96,7 +95,8 @@ class Token(object):
             elif value[-2] == '/':
                 token_type = 'ts'  # self-closed type ie <img .../>
 
-        if token_type in 'to tc ts' and re.match(patterns.PAT_HTML_SPACE, value):  # token_type != w aka word
+        if token_type in 'to tc ts' and \
+                re.match(patterns.PAT_HTML_SPACE, value):  # token_type != w aka word
             token_type = 'sp'  # this is SPACER!!!
 
         self.value = value
@@ -109,19 +109,21 @@ class Token(object):
         return "Token({}) {} {}".format(self.value, self.tag, self.token_type).encode('utf-8')
 
 
+class CensorException(Exception):
+    pass
+
+
 class CensorBase:
     lang = 'ru'
 
     def __init__(self, do_compile=True):
         self.lang_lib = import_module('censure.lang.{}'.format(self.lang))
 
-        def prep_var(v):
-            return v
-
         if do_compile:
-            def prep_var(v):
-                # patterns will be pre-compiled, so we need to copy them
-                return deepcopy(v)
+            # patterns will be pre-compiled, so we need to copy them
+            def prep_var(v): return deepcopy(v)
+        else:
+            def prep_var(v): return v
 
         # language-related constants data loading and preparations
         self.bad_phrases = prep_var(self.lang_lib.constants.BAD_PHRASES)
@@ -193,7 +195,6 @@ class CensorBase:
 
     def check_word(self, word, html=False):
         if html and re.match(patterns.PAT_HTML_CSS, word):
-            # print "SKIPPED plain css html",self.word
             return self._get_word_info(word)
 
         word = self._prepare_word(word)
@@ -228,9 +229,6 @@ class CensorBase:
             if not self._is_pi_or_e_word(word):
                 word = re.sub(patterns.PAT_PUNCT3, "", word)
             word_info = self.check_word(word)
-
-            # from pprint import pprint
-            # pprint(word_info)
 
             if not word_info['is_good']:
                 bad_words_count += 1
@@ -340,7 +338,6 @@ class CensorBase:
             regexps = regexps.values()
 
         for regexp in regexps:
-            # print regexp
             if re.search(regexp, word_info['word']):
                 rule = regexp
                 if keys:  # dict rule set
@@ -409,4 +406,3 @@ class Censor:
                 'to project to make it available'.format(
                         lang, sorted(Censor.supported_langs.keys())))
         return Censor.supported_langs[lang](do_compile=do_compile, **kwargs)
-

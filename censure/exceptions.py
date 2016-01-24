@@ -1,2 +1,0 @@
-class CensorException(Exception):
-    pass
