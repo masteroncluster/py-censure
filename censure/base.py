@@ -309,11 +309,13 @@ class CensorBase:
 
     def _get_rule(self, rule):
         if not self.do_compile:
-            return rule.encode('utf-8')
+            return rule
         else:
-            return unicode(rule) + \
-                   ' If you want to see string-value of regexp,' \
-                   ' init with do_compile=False for debug'
+            return '{} {}'.format(
+                rule,
+                'If you want to see string-value of regexp, '
+                'init with do_compile=False for debug'
+            )
 
     @staticmethod
     def _remove_duplicates(word):
