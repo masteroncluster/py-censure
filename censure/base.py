@@ -58,18 +58,18 @@ def _get_remained_tokens(tags_list):
             continue
         elif tag.token_type == 'tc':
             # can find in pre or in body
-            open_tags = filter(lambda x: x.tag == tag.tag and x.token_type == 'to', pre)
+            open_tags = [x for x in pre if x.tag == tag.tag and x.token_type == 'to']
             if len(open_tags):
                 pre.remove(open_tags[0])
                 continue
         else:
             # can be in body
-            close_tags = filter(lambda x: x.tag == tag.tag and x.token_type == 'tc', body_tags)
+            close_tags = [x for x in body_tags if x.tag == tag.tag and x.token_type == 'tc']
             if len(close_tags):
                 body_tags.remove(close_tags[0])
                 continue
             # can find in post
-            close_tags = filter(lambda x: x.tag == tag.tag and x.token_type == 'tc', post)
+            close_tags = [x for x in post if x.tag == tag.tag and x.token_type == 'tc']
             if len(close_tags):
                 post.remove(close_tags[0])
                 continue
@@ -106,7 +106,7 @@ class Token(object):
         self.token_type = token_type
 
     def __repr__(self):
-        return 'Token({}) {} {}'.format(self.value, self.tag, self.token_type).encode('utf-8')
+        return 'Token({}) {} {}'.format(self.value, self.tag, self.token_type) # .encode('utf-8')
 
 
 class CensorException(Exception):
@@ -146,6 +146,7 @@ class CensorBase:
             obj = getattr(self, attr)
             if isinstance(obj, dict):
                 for (k, v) in obj.items():
+                    # safe cause of from __future__ import unicode_literals
                     if isinstance(v, "".__class__):
                         obj[k] = re.compile(v)
                     else:
@@ -194,8 +195,9 @@ class CensorBase:
         }
 
     def check_word(self, word, html=False):
-        if html and re.match(patterns.PAT_HTML_CSS, word):
-            return self._get_word_info(word)
+        # if html and re.match(patterns.PAT_HTML_CSS, word):
+        #     print('hwa')
+        #     return self._get_word_info(word)
 
         word = self._prepare_word(word)
         word_info = self._get_word_info(word)

@@ -26,7 +26,7 @@ class CensorHelper:
 
     def test(self):
         # wi = self.c._prepare_word('camel toe')
-        # print (wi), 123
+        # print (wi)
         # return
 
         # u, j = self.c.clean_line('brotherfucker - homosexual asssucker ass sucker ass goblin assgoblin')
