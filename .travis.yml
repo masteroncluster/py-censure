@@ -16,8 +16,7 @@ before_script:
 
 # command to run tests
 script:
-   - coverage run setup.py test
-   - coverage xml
+  py.test --cov --cov-config .coveragerc
 
 after_success:
    - codecov
