@@ -9,7 +9,6 @@
 
 from __future__ import unicode_literals, print_function
 import re
-from six import string_types
 from copy import deepcopy
 from importlib import import_module
 
@@ -147,7 +146,7 @@ class CensorBase:
             obj = getattr(self, attr)
             if isinstance(obj, dict):
                 for (k, v) in obj.items():
-                    if isinstance(v, string_types):
+                    if isinstance(v, "".__class__):
                         obj[k] = re.compile(v)
                     else:
                         obj[k] = tuple((re.compile(v[i]) for i in range(0, len(v))))
