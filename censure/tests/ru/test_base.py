@@ -51,6 +51,6 @@ class CensorInternalsTestCase(TestCaseRu):
 
     def test_clean_line_e_word(self):
         word = self.data.E_OBSCENE_WORDS[0]
-        cleaned_phrase, count = self.censor.clean_line(word)
-        self.assertEqual(cleaned_phrase, constants.BEEP)
+        cleaned_line, count = self.censor.clean_line(word)
+        self.assertEqual(cleaned_line, constants.BEEP)
         self.assertEqual(count, 1)

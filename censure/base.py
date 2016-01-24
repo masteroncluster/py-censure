@@ -158,26 +158,28 @@ class CensorBase:
                     new_obj.append(re.compile(obj[i]))
                 setattr(self, attr, new_obj)
 
-    def check_phrase(self, phrase):
-        phrase_info = {'is_good': True}
-        words = self._split_phrase(phrase)
-        # Checking each word in phrase, if found any foul word,
-        # we think that all phrase is bad
+    def check_line(self, line):
+        line_info = {'is_good': True}
+        words = self._split_line(line)
+        # Checking each word in phrase line, if found any foul word,
+        # we think that all phrase line is bad
         if words:
             for word in words:
                 word_info = self.check_word(word)
                 if not word_info['is_good']:
-                    phrase_info.update({
+                    line_info.update({
                         'is_good': False,
                         'bad_word_info': word_info
                     })
                     break
-        return phrase_info
+        return line_info
 
-    def _split_phrase(self, phrase):
+    def _split_line(self, line):
         raise CensorException('Not implemented in CensorBase')
 
     def _prepare_word(self, word):
+        if not self._is_pi_or_e_word(word):
+            word = re.sub(patterns.PAT_PUNCT3, '', word)
         word = word.lower()
         for pat, rep in self.lang_lib.patterns.PATTERNS_REPLACEMENTS:
             word = re.sub(pat, rep, word)
@@ -223,19 +225,15 @@ class CensorBase:
             return True
         return False
 
-    def clean_line(self, phrase, beep=constants.BEEP):
+    def clean_line(self, line, beep=constants.BEEP):
         bad_words_count = 0
-        words = re.split(patterns.PAT_SPACE, phrase)
-        for word_orig in words:
-            word = word_orig
-            if not self._is_pi_or_e_word(word):
-                word = re.sub(patterns.PAT_PUNCT3, '', word)
+        words = re.split(patterns.PAT_SPACE, line)
+        for word in words:
             word_info = self.check_word(word)
-
             if not word_info['is_good']:
                 bad_words_count += 1
-                phrase = phrase.replace(word_orig, beep, 1)
-        return phrase, bad_words_count
+                line = line.replace(word, beep, 1)
+        return line, bad_words_count
 
     def clean_html_line(self, line, beep=constants.BEEP_HTML):
         bad_words_count = start = 0
@@ -357,10 +355,10 @@ class CensorBase:
 class CensorRu(CensorBase):
     lang = 'ru'
 
-    def _split_phrase(self, phrase):
+    def _split_line(self, line):
         buf, result = '', []
-        phrase = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', phrase))
-        for word in re.split(patterns.PAT_SPACE, phrase):
+        line = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', line))
+        for word in re.split(patterns.PAT_SPACE, line):
             if len(word) < 3 and not re.match(self.lang_lib.patterns.PAT_PREP, word):
                 buf += word
             else:
@@ -376,11 +374,11 @@ class CensorRu(CensorBase):
 class CensorEn(CensorBase):
     lang = 'en'
 
-    def _split_phrase(self, phrase):
-        # have some differences from russian split_phrase
+    def _split_line(self, line):
+        # have some differences from russian split_line
         buf, result = '', []
-        phrase = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', phrase))
-        for word in re.split(patterns.PAT_SPACE, phrase):
+        line = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', line))
+        for word in re.split(patterns.PAT_SPACE, line):
             if len(word) < 3:
                 buf += word
             else:
