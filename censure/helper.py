@@ -22,7 +22,7 @@ class CensorHelper:
             new_line, bad_words_count = self.c.clean_line(line)
             count += bad_words_count
             result.append(new_line)
-        return "\n".join(result), count
+        return '\n'.join(result), count
 
     def test(self):
         # wi = self.c._prepare_word('camel toe')
@@ -37,10 +37,10 @@ class CensorHelper:
         in_file = os.path.join(d, 'data', '{}_in.txt'.format(self.lang))
         out_file = os.path.join(d, 'data', '{}_out.txt'.format(self.lang))
 
-        with codecs.open(in_file, 'r', 'utf-8') as in_fs, codecs.open(out_file, "w", 'utf-8') as out_fs:
+        with codecs.open(in_file, 'r', 'utf-8') as in_fs, codecs.open(out_file, 'w', 'utf-8') as out_fs:
             text = in_fs.read()
             cleaned_text, count = self.censure_text(text)
-            print("Found and replaced count: {}".format(count))
+            print('Found and replaced count: {}'.format(count))
             out_fs.write(cleaned_text)
 
 
@@ -53,10 +53,10 @@ def en_just_test():
     c.test()
 
 
-if __name__=="__main__":
+if __name__=='__main__':
     # ru_just_test()
     en_just_test()
     # from timeit import Timer
-    # t = Timer("just_test()", "from __main__ import just_test")
+    # t = Timer('just_test()', 'from __main__ import just_test')
     # print(t.timeit())
 

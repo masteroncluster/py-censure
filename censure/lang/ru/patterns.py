@@ -37,7 +37,7 @@ PAT_AS_YY3 = re.compile('bl')                 # ы
 
 PAT_PI = re.compile('3[\.,]14[\d]*')
 PAT_E = re.compile('2[\.,]72[\d]*')
-PAT_PREP = re.compile(u"(а[х]?)|(в)|([вмт]ы)|(д[ао])|(же)|(за)")
+PAT_PREP = re.compile('(а[х]?)|(в)|([вмт]ы)|(д[ао])|(же)|(за)')
 
 
 PATTERNS_REPLACEMENTS = (

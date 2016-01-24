@@ -73,15 +73,15 @@ def _get_remained_tokens(tags_list):
             if len(close_tags):
                 post.remove(close_tags[0])
                 continue
-    return "".join(map(_get_token_value, pre + body_tags)), "".join(map(_get_token_value, post))
+    return ''.join(map(_get_token_value, pre + body_tags)), ''.join(map(_get_token_value, post))
 
 
 class Token(object):
     def __init__(self, value=None, token_type=None):
-        head = value.split(" ", 1)  # splits
+        head = value.split(' ', 1)  # splits
         if len(head) == 1:
             # simple tag i.e <h1>, </i>
-            head = head[0][1:-1].lower()  # need to cut last ">" symbol
+            head = head[0][1:-1].lower()  # need to cut last '>' symbol
         else:
             # complex tag with inner params i.e <input type=...>
             head = head[0].lower()[1:]
@@ -106,7 +106,7 @@ class Token(object):
         self.token_type = token_type
 
     def __repr__(self):
-        return "Token({}) {} {}".format(self.value, self.tag, self.token_type).encode('utf-8')
+        return 'Token({}) {} {}'.format(self.value, self.tag, self.token_type).encode('utf-8')
 
 
 class CensorException(Exception):
@@ -227,7 +227,7 @@ class CensorBase:
         for word_orig in words:
             word = word_orig
             if not self._is_pi_or_e_word(word):
-                word = re.sub(patterns.PAT_PUNCT3, "", word)
+                word = re.sub(patterns.PAT_PUNCT3, '', word)
             word_info = self.check_word(word)
 
             if not word_info['is_good']:
@@ -246,22 +246,22 @@ class CensorBase:
             for spacer_tag in spacers:
                 word = text[spacer_start:spacer_tag.start()]
                 if word:
-                    tokens.append(Token(token_type="w", value=word))
-                tokens.append(Token(token_type="sp", value=spacer_tag.group()))
+                    tokens.append(Token(token_type='w', value=word))
+                tokens.append(Token(token_type='sp', value=spacer_tag.group()))
                 spacer_start = spacer_tag.end()
             word = text[spacer_start:]
             if word:
-                tokens.append(Token(token_type="w", value=word))
+                tokens.append(Token(token_type='w', value=word))
             start = tag.end()
             tokens.append(Token(value=tag.group()))
         word = line[start:]
 
         # LAST prep
         if word:
-            tokens.append(Token(token_type="w", value=word))
+            tokens.append(Token(token_type='w', value=word))
 
-        current_word = current_tagged_word = ""
-        result = ""
+        current_word = current_tagged_word = ''
+        result = ''
         tagged_word_list = []
 
         def process_spacer(cw, ctw, twl, r, bwc, tok=None):
@@ -277,16 +277,16 @@ class CensorBase:
                 # good word
                 r += ctw
             twl = []
-            cw = ctw = ""
+            cw = ctw = ''
             if tok:
                 r += tok.value
             return cw, ctw, twl, r, bwc
 
         for token in tokens:
-            if token.token_type in "to tc ts":
+            if token.token_type in 'to tc ts':
                 tagged_word_list.append(token)
                 current_tagged_word += token.value
-            elif token.token_type == "w":
+            elif token.token_type == 'w':
                 tagged_word_list.append(token)
                 current_tagged_word += token.value
                 current_word += token.value
@@ -309,15 +309,15 @@ class CensorBase:
 
     def _get_rule(self, rule):
         if not self.do_compile:
-            return rule.encode("utf-8")
+            return rule.encode('utf-8')
         else:
             return unicode(rule) + \
-                   " If you want to see string-value of regexp," \
-                   " init with do_compile=False for debug"
+                   ' If you want to see string-value of regexp,' \
+                   ' init with do_compile=False for debug'
 
     @staticmethod
     def _remove_duplicates(word):
-        buf = prev_char = ""
+        buf = prev_char = ''
         count = 1  # can be <3
         for char in word:
             if char == prev_char:
@@ -332,21 +332,20 @@ class CensorBase:
         return buf
 
     def _check_regexps(self, regexps, word_info, accuse=True):
-        keys = []  # assuming list regexps here
-        if type(regexps) == dict:
+        keys = None  # assuming list regexps here
+        if isinstance(regexps, dict):
             keys = regexps.keys()
             regexps = regexps.values()
 
-        for regexp in regexps:
+        for i, regexp in enumerate(regexps):
             if re.search(regexp, word_info['word']):
                 rule = regexp
                 if keys:  # dict rule set
-                    rule = keys[regexps.index(regexp)]
+                    rule = list(keys)[i]
                 rule = self._get_rule(rule)
                 if accuse:
                     word_info['is_good'] = False
                     word_info['accuse'].append(rule)
-
                 else:
                     word_info['is_good'] = True
                     word_info['excuse'].append(rule)
@@ -357,15 +356,15 @@ class CensorRu(CensorBase):
     lang = 'ru'
 
     def _split_phrase(self, phrase):
-        buf, result = "", []
-        phrase = re.sub(patterns.PAT_PUNCT2, " ",  re.sub(patterns.PAT_PUNCT1, "", phrase))
+        buf, result = '', []
+        phrase = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', phrase))
         for word in re.split(patterns.PAT_SPACE, phrase):
             if len(word) < 3 and not re.match(self.lang_lib.patterns.PAT_PREP, word):
                 buf += word
             else:
                 if buf:
                     result.append(buf)
-                    buf = ""
+                    buf = ''
                 result.append(word)
         if buf:
             result.append(buf)
@@ -377,15 +376,15 @@ class CensorEn(CensorBase):
 
     def _split_phrase(self, phrase):
         # have some differences from russian split_phrase
-        buf, result = "", []
-        phrase = re.sub(patterns.PAT_PUNCT2, " ",  re.sub(patterns.PAT_PUNCT1, "", phrase))
+        buf, result = '', []
+        phrase = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', phrase))
         for word in re.split(patterns.PAT_SPACE, phrase):
             if len(word) < 3:
                 buf += word
             else:
                 if buf:
                     result.append(buf)
-                    buf = ""
+                    buf = ''
                 result.append(word)
         if buf:
             result.append(buf)
