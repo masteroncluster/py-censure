@@ -9,6 +9,7 @@
 
 from __future__ import unicode_literals, print_function
 import re
+from six import string_types
 from copy import deepcopy
 from importlib import import_module
 
@@ -144,9 +145,9 @@ class CensorBase:
         """
         for attr in ('excludes_data', 'excludes_core', 'foul_data', 'foul_core', 'bad_phrases'):
             obj = getattr(self, attr)
-            if type(obj) == dict:
+            if isinstance(obj, dict):
                 for (k, v) in obj.items():
-                    if type(v) == unicode:
+                    if isinstance(v, string_types):
                         obj[k] = re.compile(v)
                     else:
                         obj[k] = tuple((re.compile(v[i]) for i in range(0, len(v))))
