@@ -1,115 +1,370 @@
 # http://www.noswearing.com/dictionary/
-beep - beep
-beep - beep
-beep - beep
-beep - beep
-beep - idiot
-beep - homosexual
-beep - homosexual
-beep - idiot
-beep - homosexual
-beep - homosexual
-beep - idiot
-beep - beep
-beep - idiot
-beep - beep
-beep - butts
-beep - beep
-beep - rear-loving
-beep - homosexual
-beep - homosexual
-beep - beep
-beep - idiot
-beep - jerk
-beep - homosexual
-beep - homosexual
-beep - idiot
-beep - Buttlicker
-beep - idiot
-beep - idiot
-beep - beep
-beep - Racial Slur
-beep - homosexual
-beep - idiot
-beep - beep
-beep - idiot
-beep - beep
-beep - beep
-beep - female genitalia
+[beep] - [beep]
+[beep] - [beep]
+[beep] - [beep]
+[beep] - [beep]
+[beep] - idiot
+[beep] - homosexual
+[beep] - homosexual
+[beep] - idiot
+[beep] - homosexual
+[beep] - homosexual
+[beep] - idiot
+[beep] - [beep]
+[beep] - idiot
+[beep] - [beep]
+[beep] - butts
+[beep] - [beep]
+[beep] - rear-loving
+[beep] - homosexual
+[beep] - homosexual
+[beep] - [beep]
+[beep] - idiot
+[beep] - jerk
+[beep] - homosexual
+[beep] - homosexual
+[beep] - idiot
+[beep] - Buttlicker
+[beep] - idiot
+[beep] - idiot
+[beep] - [beep]
+[beep] - Racial Slur
+[beep] - homosexual
+[beep] - idiot
+[beep] - [beep]
+[beep] - idiot
+[beep] - [beep]
+[beep] - [beep]
+[beep] - female genitalia
 
-beep - idiot
-beep - illegitimate child
-beep - Mexican
-beep - female dog
-beep - idiot
-beep - female dogs
-beep - homosexual
-beep - mean
-beep job - sexual act
-beep - sexual act
-beep - male genitalia
-beep - male genitalia
-beep - erection
-beep - homosexual beep beep sucker beep goblin beep
-beep - poop
-beep - homosexual
-beep plug - cork
-beep - homosexual
-beep - homosexual
-beep - homosexual
+[beep] - idiot
+[beep] - illegitimate child
+[beep] - Mexican
+[beep] - female dog
+[beep] - idiot
+[beep] - female dogs
+[beep] - homosexual
+[beep] - mean
+[beep] job - sexual act
+[beep] - sexual act
+[beep] - male genitalia
+[beep] - male genitalia
+[beep] - erection
+[beep] - homosexual [beep] [beep] sucker [beep] goblin [beep]
+[beep] - poop
+[beep] - homosexual
+[beep] plug - cork
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
 
 camel toe - female genitalia
-beep - homosexual
-beep - Breast
-beep - Chinese
-beep - asian
-beep - male genitalia
-beep - small penis
-beep - female genitals
-beep - idiot
-beep - sexual act
-beep - mess up
-beep - penis
-beep - Jerk
-beep - idiot
-beep - idiot
-beep - idiot
-beep - idiot
-beep - idiot
-beep - homosexual
-beep - homosexual
-beep - homosexual
-beep - homosexual
-beep - homosexual
-beep - idiot
-beep - homosexual
-beep - idiot
-beep - idiot
-beep - idiot
-beep - homosexual
-beep - homosexual
-beep - homosexual
-beep - homosexual
-beep - homosexual
-beep - idiot
-beep - female genitalia
-beep - female genitalia
-beep - African American
-beep - vagina
+[beep] - homosexual
+[beep] - Breast
+[beep] - Chinese
+[beep] - asian
+[beep] - male genitalia
+[beep] - small penis
+[beep] - female genitals
+[beep] - idiot
+[beep] - sexual act
+[beep] - mess up
+[beep] - penis
+[beep] - Jerk
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - idiot
+[beep] - homosexual
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - idiot
+[beep] - female genitalia
+[beep] - female genitalia
+[beep] - African American
+[beep] - vagina
 cracker - Caucasian
-beep - semen
-beep - idiot
-beep - prostitute
-beep - homosexual
-beep - homosexual
-beep - dirty girl
-beep - idiot
-beep - female genitalia
-beep - sexual act
-beep - vagina
-beep - idiot
-beep - idiot
-beep - female genitalia
-beep - homosexual
-beep - idiot
-beep - idiot
+[beep] - semen
+[beep] - idiot
+[beep] - prostitute
+[beep] - homosexual
+[beep] - homosexual
+[beep] - dirty girl
+[beep] - idiot
+[beep] - female genitalia
+[beep] - sexual act
+[beep] - vagina
+[beep] - idiot
+[beep] - idiot
+[beep] - female genitalia
+[beep] - homosexual
+[beep] - idiot
+[beep] - idiot
+
+dago - Italian
+[beep] - darn
+deggo - Italian
+dick - penis
+dick-sneeze - orgasm
+[beep] - idiot
+[beep] - Hands
+[beep] - idiot
+[beep] - idiot
+[beep] - homosexual
+[beep] - phallace face
+[beep] - male genitalia
+[beep] - semen
+[beep] - sperm
+[beep] - homosexual
+dicks - penises
+[beep] - sexual act
+[beep] - homosexual
+[beep] - sexual act
+[beep] - homosexual
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - homosexual
+[beep] - sexual toy
+[beep] - idiot
+[beep] - idiot
+[beep] - poop
+douche - female hygene product
+[beep] - idiot
+[beep] - female hygene accessory
+[beep] - homosexual
+dumass - idiot
+[beep] [beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+dumshit - idiot
+[beep] - homosexual
+
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual idiot
+fatass - a fat person
+[beep] - sexual act
+[beep] - sexual act
+[beep] - homosexual
+[beep] - fornicate
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - [beep]
+[beep] - Sexual fluids
+[beep] - had intercourse
+[beep] - fornicator
+[beep] - idiot
+[beep] - idiot
+[beep] - [beep]
+[beep] - jerk
+[beep] - sexual act
+[beep] - freaking
+[beep] - idiot
+[beep] - idiot
+[beep] - go away
+[beep] - sexual act
+[beep] - male genitalia
+[beep] - Moron
+[beep] - idiot
+[beep] - idiot
+[beep] - idiot
+[beep] - dummy
+[beep] - idiot
+[beep] - homosexual
+
+gay - homosexual
+[beep] - [beep]
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+goddamn - goshdarn
+goddamnit - goshdarnit
+[beep] - female genitalia
+[beep] - Chinese
+gringo - foreigner
+guido - italian
+
+handjob - sexual act
+[beep] on - erection
+heeb - Jewish Person
+hell - heck
+ho - woman
+hoe - Woman
+homo - homosexual
+[beep] - idiot
+honkey - white person
+[beep] - sexual act
+
+[beep] - idiot
+[beep] - idiot
+jap - japanesse person
+jerk off - masturbate
+[beep] - idiot
+jigaboo - African American
+[beep] - Semen
+jungle bunny - african american
+junglebunny - african american
+
+kike - Jewish Person
+[beep] - female genitalia
+[beep] - female genitalia
+kraut - german
+[beep] - female genitalia
+kyke - Jewish person
+
+[beep] - loser
+[beep] - overweight individual
+[beep] - homosexual
+[beep] - homosexual
+[beep] - homosexual
+
+[beep] - homosexual
+mick - irish
+[beep] - female genitalia
+[beep] - Jerk
+[beep] - mother loving
+[beep] - mother lover
+[beep] - fornicating with mother
+[beep] - female genitalia
+[beep] - homosexual
+[beep] - sexual act
+
+negro - african american
+nigaboo - African American
+nigga - african american
+nigger - african american
+niggers - African Americans
+niglet - african american child
+nut sack - male genitalia
+nutsack - male genitalia
+
+paki - pakistanien
+panooch - femail genitalia
+pecker - Penis
+peckerhead - idiot
+penis - male genitalia
+penisbanger - homosexual
+[beep] - homosexual
+penispuffer - homosexual
+piss - urinate
+pissed - urinated
+pissed off - angry
+pissflaps - female genitalia
+polesmoker - homosexual
+pollock - polish person
+poon - female genitals
+poonani - female genitalia
+poonany - vagina
+poontang - female genitalia
+porch monkey - african american
+porchmonkey - African American
+
+prick - penis
+punanny - female genitalia
+punta - female dog
+pussies - Female Genitalias
+pussy - female reproductive organ
+pussylicking - sexual act
+puto - idiot
+
+queef - vaginal fart.
+queer - homosexual
+queerbait - homosexual
+queerhole - homosexual
+
+renob - erection
+rimjob - dirty sexual act
+ruski - Russian
+
+sand nigger - middle eastern
+sandnigger - middle eastern
+schlong - male genitalia
+scrote - male genitalia
+shit - poop
+shitass - idiot
+shitbag - idiot
+shitbagger - idiot
+shitbrains - idiot
+shitbreath - Bad Breath
+shitcanned - Fired
+shitcunt - idiot
+shitdick - idiot
+shitface - pooface
+shitfaced - Drunk
+shithead - jerk
+shithole - idiot
+shithouse - bathroom
+shitspitter - [beep]
+shitstain - poop
+shitter - defecator
+shittiest - worst
+shitting - pooping
+shitty - bad
+shiz - poop
+shiznit - poop
+skank - dirty girl
+skeet - semen
+[beep] - sexual act
+slut - sexually popular woman
+slutbag - sexually popular woman
+smeg - poop
+snatch - female genitalia
+spic - mexican
+spick - mexican american
+splooge - ejaculate
+spook - White person
+suckass - idiot
+
+tard - mentally challenged
+testicle - male genitalia
+thundercunt - idiot
+tit - breast
+[beep] - sexual act
+tits - breasts
+[beep] - sexual act
+twat - female genitals
+twatlips - idiot
+twats - vaginas
+twatwaffle - homosexual
+
+[beep] - homosexual
+
+va-j-j - female genitalia
+vag - femail genitalia
+vagina - female genitalia
+vajayjay - female genitalia
+vjayjay - female genitalia
+
+wank - sexual act
+wankjob - sexual act
+wetback - Mexican
+whore - hussy
+whorebag - idiot
+whoreface - idiot
+wop - Italian

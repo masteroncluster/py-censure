@@ -13,6 +13,13 @@ EXCLUDES_CORE = {
 
 }
 
+#    'cum': '^cum(($)|(bubble)|(dumpster)|()|()',
+FOUL_DATA = {
+    'a': [
+        '^anus',
+        '^axwound',
+    ]
+}
 FOUL_CORE = {
     'fuck': 'fuck',
     # a
@@ -54,13 +61,56 @@ FOUL_CORE = {
     'cum': '^cum(($)|(bubble)|(dumpster)|(guzzler)|(jockey)|(slut)|(tart))',
     'cunni': '^cunni(($)|(e)|(lingus))',
     'cunt': '^cunt(($)|(ass)|(face)|(hole)|(licker)|(rag)|(slut))$',
-}
-#    'cum': '^cum(($)|(bubble)|(dumpster)|()|()',
-FOUL_DATA = {
-    'a': [
-        '^anus',
-        '^axwound',
-    ]
+
+    'damn': '^damn$',
+    'dick': '^dick[\-s]*((bag)|(beaters)|(face)|(head)|(hole)|'
+            '(juice)|(milk)|(monger)|(slap)|(suck(er|in))|'
+            '(tickler)|(wad)|(weasel)|(weed)|(wod))',
+    'dike': '^d[iy]ke$',
+    'dildo': 'dildo',
+    'dipshit': 'dipshit',
+    'doochbag': 'doochbag',
+    'dookie': 'dookie',
+    'douche': 'douche[\-]*((fag)|(bag)|(waffle))',
+    'dumb': 'dum[b\-]($|(ass)|(fuck)|(shit))',
+
+    'fag': 'fag($|(bag)|(g[io]t)|(tard)|(ass))',
+    'fellatio': 'fellatio',
+    'feltch': 'feltch',
+    'flamer': 'flamer',
+    'fuck': 'fuck|(^fuk$)',
+    'fudgepacker': 'fudgepacker',
+
+    'gay': 'gay((ass)|(bob)|(do)|(lord)|(tard)|(wad))',
+    'goddamn': 'god[\-]*dumn',
+
+    'gooch': 'gooch',
+    'gook': 'gook',
+
+    'hadjob': 'hadjob',
+    'hardon': 'hard(on)*',
+    'homodumbshit': 'homodumbshit',
+    'humping': 'humping',
+
+    'jackass': 'jackass',
+    'jagoff': 'jagoff',
+    'jerk': 'jerk((o[f]+)|(ass))',
+    'jizz': 'jizz',
+
+    'kooch': 'koo[t]*ch',
+    'kunt': 'kunt',
+
+    'lameass': 'lameass',
+    'lardass': 'lardass',
+    'lesbian': '^lesb(ian|o)',
+    'lezzie': '^lezzie',
+
+    'mcfagget': 'mcfagget',
+    'minge': 'minge',
+    'mothafucka': 'm[oa](th|z)afuck(a|in[g]*|er)',
+
+    'muff': '^muff(diver)*',
+    'munging': 'munging'
 }
 
 
