@@ -21,23 +21,15 @@ class CensorInternalsTestCase(TestCaseRu):
             self.assertEqual(self.censor._is_pi_or_e_word(w), result)
 
     def test_good_word(self):
-        # for x in range(1000):
-        word = self._get_random_word(russian_only=True)
-        word_info = self.censor.check_word(word)
-        # try:
-        self.assertDictContainsSubset({
-            # 'excuse': [],
-            # 'accuse': [],
-            'word': self.censor._prepare_word(word),
-            'is_good': True,
-        }, word_info)
-        # except Exception as e:
-        #     print 123
-        #     print
-        #     print word
-        #     print word_info
-        #     print e
-        #     raise e
+        for x in range(50):
+            word = self._get_random_word(russian_only=True)
+            word_info = self.censor.check_word(word)
+            self.assertDictContainsSubset({
+                # 'excuse': [],
+                # 'accuse': [],
+                'word': self.censor._prepare_word(word),
+                'is_good': True,
+            }, word_info)
 
     def test_check_e_word(self):
         word = self.data.E_OBSCENE_WORDS[0]
@@ -51,6 +43,7 @@ class CensorInternalsTestCase(TestCaseRu):
 
     def test_clean_line_e_word(self):
         word = self.data.E_OBSCENE_WORDS[0]
-        cleaned_line, count = self.censor.clean_line(word)
+        cleaned_line, count, phrases_count = self.censor.clean_line(word)
         self.assertEqual(cleaned_line, constants.BEEP)
         self.assertEqual(count, 1)
+        self.assertEqual(phrases_count, 0)

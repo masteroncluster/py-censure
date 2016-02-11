@@ -30,16 +30,19 @@ PI_OBSCENE_WORDS = (
 
 OBSCENE_HTML_LINES = (
     (
-        '<b>б<i>ля</b> пи<i>да&lt;ра</i>сы еба<span>нyты2.72</span> пи&gt;зд<a>a <p>д<o>лбое<i>бы</p>',
+        ('<b>б<i>ля</b> пи<i>да&lt;ра</i>сы еба<span>нyты2.72</span> '
+         'пи&gt;зд<a>a <p>д<o>лбое<i>бы</p>'),
         '<b>{beep}</b> {beep} {beep} {beep} <p>{beep}</p>'.format(beep=BEEP)
     ),
     (
         '<strong>апездал</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;дилитант<br />',
-        '<strong>{beep}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;дилитант<br />'.format(beep=BEEP)
+        '<strong>{beep}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;дилитант<br />'.format(
+            beep=BEEP)
     ),
     (
-        '<H1><img><eM>зл<b>а</B>е</em><strong>бучий</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;нехороший,плохой<br />',
-        '<H1><img>{beep}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;нехороший,плохой<br />'.format(beep=BEEP)
-
+        ('<H1><img><eM>зл<b>а</B>е</em><strong>бучий</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+         'нехороший,плохой<br />'),
+        '<H1><img>{beep}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;нехороший,плохой<br />'.format(
+            beep=BEEP)
     )
 )

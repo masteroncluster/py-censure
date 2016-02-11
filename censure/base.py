@@ -121,12 +121,15 @@ class CensorBase:
 
         if do_compile:
             # patterns will be pre-compiled, so we need to copy them
-            def prep_var(v): return deepcopy(v)
+            def prep_var(v):
+                return deepcopy(v)
         else:
-            def prep_var(v): return v
+            def prep_var(v):
+                return v
 
         # language-related constants data loading and preparations
         self.bad_phrases = prep_var(self.lang_lib.constants.BAD_PHRASES)
+        self.bad_semi_phrases = prep_var(self.lang_lib.constants.BAD_SEMI_PHRASES)
         self.excludes_data = prep_var(self.lang_lib.constants.EXCLUDES_DATA)
         self.excludes_core = prep_var(self.lang_lib.constants.EXCLUDES_CORE)
         self.foul_data = prep_var(self.lang_lib.constants.FOUL_DATA)
@@ -142,7 +145,8 @@ class CensorBase:
         disable call for this function (in __init__) by specifying do_compile=False to __init__,
         then debug, fix bad rule and then use do_compile=True again
         """
-        for attr in ('excludes_data', 'excludes_core', 'foul_data', 'foul_core', 'bad_phrases'):
+        for attr in ('excludes_data', 'excludes_core',
+                     'foul_data', 'foul_core', 'bad_semi_phrases', 'bad_phrases'):
             obj = getattr(self, attr)
             if isinstance(obj, dict):
                 for (k, v) in obj.items():
@@ -172,6 +176,16 @@ class CensorBase:
                         'bad_word_info': word_info
                     })
                     break
+        if line_info['is_good']:
+            phrases_info = self.check_line_bad_phrases(line)
+            if not phrases_info['is_good']:
+                line_info.update(phrases_info)
+        return line_info
+
+    def check_line_bad_phrases(self, line):
+        line_info = self._get_word_info(line)
+        self._check_regexps(self.bad_phrases, line_info)
+        line_info.pop('word')  # not the word but the line
         return line_info
 
     def _split_line(self, line):
@@ -197,10 +211,6 @@ class CensorBase:
         }
 
     def check_word(self, word, html=False):
-        # if html and re.match(patterns.PAT_HTML_CSS, word):
-        #     print('hwa')
-        #     return self._get_word_info(word)
-
         word = self._prepare_word(word)
         word_info = self._get_word_info(word)
         # Accusing word
@@ -210,7 +220,7 @@ class CensorBase:
         if word_info['is_good']:  # still good, more accuse checks
             self._check_regexps(self.foul_core, word_info)
         if word_info['is_good']:  # still good, more accuse checks
-            self._check_regexps(self.bad_phrases, word_info)
+            self._check_regexps(self.bad_semi_phrases, word_info)
 
         # Excusing word
         if not word_info['is_good']:
@@ -233,7 +243,17 @@ class CensorBase:
             if not word_info['is_good']:
                 bad_words_count += 1
                 line = line.replace(word, beep, 1)
-        return line, bad_words_count
+
+        bad_phrases_count = 0
+        line_info = self.check_line_bad_phrases(line)
+        if not line_info['is_good']:
+            for pat in line_info['accuse']:
+                line2 = re.sub(pat, beep, line)
+                if line2 != line:
+                    bad_phrases_count += 1
+                line = line2
+
+        return line, bad_words_count, bad_phrases_count
 
     def clean_html_line(self, line, beep=constants.BEEP_HTML):
         bad_words_count = start = 0
@@ -333,7 +353,7 @@ class CensorBase:
                 prev_char = char
         return buf
 
-    def _check_regexps(self, regexps, word_info, accuse=True):
+    def _check_regexps(self, regexps, word_info, accuse=True, break_on_first=True):
         keys = None  # assuming list regexps here
         if isinstance(regexps, dict):
             keys = regexps.keys()
@@ -351,7 +371,8 @@ class CensorBase:
                 else:
                     word_info['is_good'] = True
                     word_info['excuse'].append(rule)
-                break
+                if break_on_first:
+                    break
 
 
 class CensorRu(CensorBase):
@@ -359,7 +380,7 @@ class CensorRu(CensorBase):
 
     def _split_line(self, line):
         buf, result = '', []
-        line = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', line))
+        line = re.sub(patterns.PAT_PUNCT2, ' ', re.sub(patterns.PAT_PUNCT1, '', line))
         for word in re.split(patterns.PAT_SPACE, line):
             if len(word) < 3 and not re.match(self.lang_lib.patterns.PAT_PREP, word):
                 buf += word
@@ -379,7 +400,7 @@ class CensorEn(CensorBase):
     def _split_line(self, line):
         # have some differences from russian split_line
         buf, result = '', []
-        line = re.sub(patterns.PAT_PUNCT2, ' ',  re.sub(patterns.PAT_PUNCT1, '', line))
+        line = re.sub(patterns.PAT_PUNCT2, ' ', re.sub(patterns.PAT_PUNCT1, '', line))
         for word in re.split(patterns.PAT_SPACE, line):
             if len(word) < 3:
                 buf += word
@@ -405,5 +426,5 @@ class Censor:
             raise CensorException(
                 'Language {} is not yet in supported: {}. Please contribute '
                 'to project to make it available'.format(
-                        lang, sorted(Censor.supported_langs.keys())))
+                    lang, sorted(Censor.supported_langs.keys())))
         return Censor.supported_langs[lang](do_compile=do_compile, **kwargs)

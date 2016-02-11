@@ -19,25 +19,18 @@ class CensorHelper:
         count = 0
         result = []
         for line in text.splitlines():
-            new_line, bad_words_count = self.c.clean_line(line)
-            count += bad_words_count
+            new_line, bad_words_count, bad_phrases_count = self.c.clean_line(line)
+            count += bad_words_count + bad_phrases_count
             result.append(new_line)
         return '\n'.join(result), count
 
     def test(self):
-        # wi = self.c._prepare_word('camel toe')
-        # print (wi)
-        # return
-
-        # u, j = self.c.clean_line('brotherfucker - homosexual asssucker ass sucker ass goblin assgoblin')
-        # print (u)
-        # return
-
         d = os.path.dirname(os.path.abspath(__file__))
         in_file = os.path.join(d, 'data', '{}_in.txt'.format(self.lang))
         out_file = os.path.join(d, 'data', '{}_out.txt'.format(self.lang))
 
-        with codecs.open(in_file, 'r', 'utf-8') as in_fs, codecs.open(out_file, 'w', 'utf-8') as out_fs:
+        with codecs.open(in_file, 'r', 'utf-8') as in_fs, \
+                codecs.open(out_file, 'w', 'utf-8') as out_fs:
             text = in_fs.read()
             cleaned_text, count = self.censure_text(text)
             print('Found and replaced count: {}'.format(count))
@@ -48,15 +41,15 @@ def ru_just_test():
     c = CensorHelper(lang='ru', do_compile=False)
     c.test()
 
+
 def en_just_test():
     c = CensorHelper(lang='en', do_compile=False)
     c.test()
 
 
-if __name__=='__main__':
-    # ru_just_test()
+if __name__ == '__main__':
+    ru_just_test()
     en_just_test()
     # from timeit import Timer
     # t = Timer('just_test()', 'from __main__ import just_test')
     # print(t.timeit())
-
