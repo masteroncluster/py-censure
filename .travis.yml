@@ -8,13 +8,13 @@ python:
 # install: 'pip install -r requirements.txt'
 
 install:
+   - pip install pep8
    - pip install flake8
    - pip install codecov
    - pip install pytest-cov
 
 before_script:
-   flake8 .
-   make check
+   - make check
 
 # command to run tests
 script:

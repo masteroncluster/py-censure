@@ -19,12 +19,12 @@ Soon...
 
 ## Contributing / Development
 
-> (fork branch, fix a bug or add a fetures)
+> (fork branch, fix a bug, update patterns or add a feature)
 > (running tests)
 ```sh
 python setup.py test
 ```
-> (dont forget to check with flake8)
+> (dont forget to check with flake8, and 'make check' for pep-8)
 > (submit merge request)
 
 
