@@ -2,10 +2,10 @@
 
 =======
 Obscene words detection library, written in Python
-Check for profanity words or clean then from phrases, text or html
+Check for profanity words and clean them then from phrases, text, and even html
 
 ## Features
-- Supported languages: **Russian** / **English**, more on you to contribute
+- Supported languages: **Russian** / **English**, more on You to contribute
 
 
 ## Installation
@@ -15,7 +15,18 @@ pip install py-censure
 ```
 
 ## Examples
-Soon...
+    censor = Censor.get(lang='ru')
+    line = '<some text line>'
+    line_info = censor.check_line(line)  # actually you can call .clean_line without .check_line
+    if line_info['is_good']:
+        # good line
+    ...
+    else:
+        # bad line
+        cleaned_line, bad_words_count, bad_phrases_count = censor.clean_line(line)
+        ...
+        
+Check for more examples and usage in helper.py, show_examples function
 
 ## Contributing / Development
 
@@ -24,7 +35,7 @@ Soon...
 ```sh
 python setup.py test
 ```
-> (dont forget to check with flake8, and 'make check' for pep-8)
+> (don't forget to 'make check' for pep-8)
 > (submit merge request)
 
 
